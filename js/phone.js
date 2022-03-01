@@ -41,6 +41,11 @@ const loadPhoneData = (phoneId) => {
   //fetch data to load data
   fetch(urls)
     .then(response => response.json())
-    .then(details => console.log(details));
+    .then(details => displayPhoneDetails(details));
 } 
 
+// display phone details
+const displayDetail = () => {
+  let showDetail = document.getElementById('show-detail');
+  console.log(showDetail)
+}

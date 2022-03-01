@@ -21,7 +21,7 @@
     <!-- header content -->
     <header class="container my-3">
       <div class="heading">
-        <h1 class="text-center ">Phone Ware</h1>
+        <h1 class="text-center">Phone Ware</h1>
       </div>
       <div class="search-box d-flex w-75 mx-auto mt-2">
         <input
@@ -31,17 +31,75 @@
           aria-label="Search"
           id="search-input"
         />
-        <button class="btn btn-primary" onclick = "loadData()">Search</button>
+        <button class="btn btn-primary" onclick="loadData()">Search</button>
       </div>
     </header>
     <!-- main section to display phones -->
     <main class="container mt-4">
+      <!-- phone detail section  -->
+      <section id="show-detail "  class="d-flex justify-content-center my-1">
+        <div class="row d-flex justify-content-center ">
+          <div class="col-lg-8 mb-3">
+            <div class="card border-0 rounded shadow" style="width: 18rem">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXOpG9u6kirx2NLc8kwOBmZkBcGcamJO2Aog&usqp=CAU" class="card-img-top" alt="..." />
+              <div class="card-body detail-panel">
 
-        <section class="all-phones">
-            <div class="row" id="display-phone">
+                <!-- product intruductory section -->
+                <h2 class="h5">Specifications :</h2>
+                <table class="table">
+                  <tbody>
+                    <tr>                    
+                      <th>Mark</td>
+                      <td>Otto</td>                    
+                    </tr>
+                    <tr>                     
+                      <th>Jacob</td>
+                      <td>Thornton</td>                    
+                    </tr>
+                  </tbody>
+                </table>   
                 
+                <!-- connectivites  -->
+                <h2 class="h5">Connectivites :</h2>
+                <table class="table">
+                  <tbody>
+                    <tr>                    
+                      <th>Mark</td>
+                      <td>Otto</td>                    
+                    </tr>
+                    <tr>                     
+                      <th>Jacob</td>
+                      <td>Thornton</td>                    
+                    </tr>
+                  </tbody>
+                </table>   
+                
+
+                <!-- main features -->
+                <h2 class="h5">Main Features :</h2>
+                <table class="table">
+                  <tbody>
+                    <tr>                    
+                      <th>Mark</td>
+                      <td>Otto</td>                    
+                    </tr>
+                    <tr>                     
+                      <th>Jacob</td>
+                      <td>Thornton</td>                    
+                    </tr>
+                  </tbody>
+                </table>   
+                
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- display phones -->
+      <section class="all-phones">
+        <div class="row" id="display-phone"></div>
+      </section>
     </main>
 
     <!-- bootstrap javascript cdn -->
