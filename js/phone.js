@@ -20,14 +20,27 @@ const displayPhone = (phones) => {
   showPhone.textContent = "";
   phones =  phones.slice(0, 20);
   for (const phone of phones) {
-    showPhone.innerHTML += `<div class="col-lg-4 my-2 ">
+    showPhone.innerHTML += `<div class="col-lg-4 my-2 col-md-6 d-flex justify-content-center">
                                   <div class="card rounded shadow border-0 p-3" style="width: 18rem;">
                                     <img src=${phone.image} class="card-img-top" alt="phones images">
                                     <div class="card-body">
                                       <h6 class="card-title">${ phone.brand } ${ phone.phone_name }</h6>
-                                      <a href="#" class="btn btn-primary">See Details</a>
+                                      <button onclick = "loadPhoneData('${phone.slug}')" class="btn btn-primary">See Details</button>
                                     </div>
                                   </div>
                                 </div>`
+
   }
 }
+
+// phone data load using fetch api
+const loadPhoneData = (phoneId) => { 
+  console.log(phoneId)
+  let urls = ` https://openapi.programming-hero.com/api/phone/${ phoneId }`;
+  
+  //fetch data to load data
+  fetch(urls)
+    .then(response => response.json())
+    .then(details => console.log(details));
+} 
+
