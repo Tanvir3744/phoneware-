@@ -13,6 +13,10 @@ const loadData = () => {
   showSpinner('block');
   let inputFieldValue = inputField.value;
 
+  // grab detail element
+  let detailElement = document.getElementById('show-detail');
+  detailElement.textContent = "";
+
   /* check if search box is empty or not */
   let empty = document.getElementById('empty');
   if (inputFieldValue == '') {
@@ -76,103 +80,168 @@ const loadPhoneData = (phoneId) => {
 const displayPhoneDetails = (details) => {
   let phone = details.data;
 
+
   //check if there any release date or not
   if (phone.releaseDate == '') {
     phone.releaseDate = 'realease date not found'
   }
 
-
-
-
+  //check if there is not any others option
   let showDetail = document.getElementById('show-detail');
-  showDetail.innerHTML = `<div class="col-lg-10 mb-3 d-flex justify-content-center  ">
-                            <div class="card border-0 rounded shadow p-4  " style="width: 52rem">
-                             <div class = "image text-center">
-                             <img id="heading-img" src=${ phone.image } class="card-img-top img-fluid" alt="..." />
-                             <h3 class ="h2 mt-2"><strong> ${ phone.brand } ${ phone.name }  </strong></h3>
-                             </div>
-                              <div class="card-body detail-panel">
+  showDetail.textContent = "";
+  if (phone.others == undefined) {
+    showDetail.innerHTML = `<div class="col-lg-10 mb-3 d-flex justify-content-center  ">
+    <div class="card border-0 rounded shadow p-4  " style="width: 52rem">
+     <div class = "image text-center">
+     <img id="heading-img" src=${ phone.image } class="card-img-top img-fluid" alt="..." />
+     <h3 class ="h2 mt-2"><strong> ${ phone.brand } ${ phone.name }  </strong></h3>
+     </div>
+      <div class="card-body detail-panel">
 
-                                <!-- product intruductory section -->
-                                <h2 class="h5 fw-bold">Specifications :</h2>
-                                <table class="table">
-                                  <tbody>
-                                    <tr>                    
-                                      <th>Brand :</td>
-                                      <td>${ phone.brand }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Name :</td>
-                                      <td>${ phone.name }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Released :</td>
-                                      <td>${ phone.releaseDate }</td>                    
-                                    </tr>
-                                  </tbody>
-                                </table>   
+        <!-- product intruductory section -->
+        <h2 class="h5 fw-bold">Specifications :</h2>
+        <table class="table">
+          <tbody>
+            <tr>                    
+              <th>Brand :</td>
+              <td>${ phone.brand }</td>                    
+            </tr>
+            <tr>                     
+              <th>Name :</td>
+              <td>${ phone.name }</td>                    
+            </tr>
+            <tr>                     
+              <th>Released :</td>
+              <td>${ phone.releaseDate }</td>                    
+            </tr>
+          </tbody>
+        </table>   
 
-                                <!-- connectivites  -->
-                                <h2 class="h5 fw-bold">Connectivites (Others) :</h2>
-                                <table class="table">
-                                  <tbody>
-                                    <tr>                    
-                                      <th>WLAN :</td>
-                                      <td>${ phone.others.WLAN }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Bluetooh :</td>
-                                      <td>${ phone.others.Bluetooth }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>GPS :</td>
-                                      <td>${ phone.others.GPS }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>NFC :</td>
-                                      <td>${ phone.others.NFC }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Radio :</td>
-                                      <td>${ phone.others.Radio }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>USB :</td>
-                                      <td>${ phone.others.USB }</td>                    
-                                    </tr>
-                                  </tbody>
-                                </table>   
+        <!-- connectivites  -->
+        <h2 class="h5 fw-bold">Connectivites (Others) :</h2>
+        
+        <!-- main features -->
+        <h2 class="h5 fw-bold">Main Features :</h2>
+        <table class="table">
+          <tbody>
+            <tr>                    
+              <th>Storage :</td>
+              <td>${ phone.mainFeatures.storage }</td>                    
+            </tr>
+            <tr>                     
+              <th>Display Size :</td>
+              <td>${ phone.mainFeatures.displaySize }</td>                    
+            </tr>
+            <tr>                     
+              <th>Chipset :</td>
+              <td>${ phone.mainFeatures.chipSet }</td>                    
+            </tr>
+            <tr>                     
+              <th>Memory :</td>
+              <td>${ phone.mainFeatures.memory }</td>                    
+            </tr>
+            <tr>                     
+              <th>Sensor :</td>
+              <td>${ phone.mainFeatures.sensors }</td>                    
+            </tr>
+          </tbody>
+        </table>   
+
+      </div>
+    </div>
+  </div>`;
+  } else {
+    showDetail.innerHTML = `<div class="col-lg-10 mb-3 d-flex justify-content-center  ">
+    <div class="card border-0 rounded shadow p-4  " style="width: 52rem">
+     <div class = "image text-center">
+     <img id="heading-img" src=${ phone.image } class="card-img-top img-fluid" alt="..." />
+     <h3 class ="h2 mt-2"><strong> ${ phone.brand } ${ phone.name }  </strong></h3>
+     </div>
+      <div class="card-body detail-panel">
+
+        <!-- product intruductory section -->
+        <h2 class="h5 fw-bold">Specifications :</h2>
+        <table class="table">
+          <tbody>
+            <tr>                    
+              <th>Brand :</td>
+              <td>${ phone.brand }</td>                    
+            </tr>
+            <tr>                     
+              <th>Name :</td>
+              <td>${ phone.name }</td>                    
+            </tr>
+            <tr>                     
+              <th>Released :</td>
+              <td>${ phone.releaseDate }</td>                    
+            </tr>
+          </tbody>
+        </table>   
+
+        <!-- connectivites  -->
+        <h2 class="h5 fw-bold">Connectivites (Others) :</h2>
+        <table class="table">
+          <tbody>
+            <tr>                    
+              <th>WLAN :</td>
+              <td>${ phone.others.WLAN }</td>                    
+            </tr>
+            <tr>                     
+              <th>Bluetooh :</td>
+              <td>${ phone.others.Bluetooth }</td>                    
+            </tr>
+            <tr>                     
+              <th>GPS :</td>
+              <td>${ phone.others.GPS }</td>                    
+            </tr>
+            <tr>                     
+              <th>NFC :</td>
+              <td>${ phone.others.NFC }</td>                    
+            </tr>
+            <tr>                     
+              <th>Radio :</td>
+              <td>${ phone.others.Radio }</td>                    
+            </tr>
+            <tr>                     
+              <th>USB :</td>
+              <td>${ phone.others.USB }</td>                    
+            </tr>
+          </tbody>
+        </table>   
 
 
-                                <!-- main features -->
-                                <h2 class="h5 fw-bold">Main Features :</h2>
-                                <table class="table">
-                                  <tbody>
-                                    <tr>                    
-                                      <th>Storage :</td>
-                                      <td>${ phone.mainFeatures.storage }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Display Size :</td>
-                                      <td>${ phone.mainFeatures.displaySize }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Chipset :</td>
-                                      <td>${ phone.mainFeatures.chipSet }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Memory :</td>
-                                      <td>${ phone.mainFeatures.memory }</td>                    
-                                    </tr>
-                                    <tr>                     
-                                      <th>Sensor :</td>
-                                      <td>${ phone.mainFeatures.sensors }</td>                    
-                                    </tr>
-                                  </tbody>
-                                </table>   
+        <!-- main features -->
+        <h2 class="h5 fw-bold">Main Features :</h2>
+        <table class="table">
+          <tbody>
+            <tr>                    
+              <th>Storage :</td>
+              <td>${ phone.mainFeatures.storage }</td>                    
+            </tr>
+            <tr>                     
+              <th>Display Size :</td>
+              <td>${ phone.mainFeatures.displaySize }</td>                    
+            </tr>
+            <tr>                     
+              <th>Chipset :</td>
+              <td>${ phone.mainFeatures.chipSet }</td>                    
+            </tr>
+            <tr>                     
+              <th>Memory :</td>
+              <td>${ phone.mainFeatures.memory }</td>                    
+            </tr>
+            <tr>                     
+              <th>Sensor :</td>
+              <td>${ phone.mainFeatures.sensors }</td>                    
+            </tr>
+          </tbody>
+        </table>   
 
-                              </div>
-                            </div>
-                          </div>`;
+      </div>
+    </div>
+  </div>`;
+  }
+
+
 
 }
