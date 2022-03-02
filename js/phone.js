@@ -1,9 +1,28 @@
-console.log('hello phone foster');
+
+
+//show spinner to website 
+const showSpinner = (displayClass) => {
+  let spinner = document.getElementById('spinner');
+  spinner.style.display = displayClass;
+}
+
 
 // fetch api and loading data through search box
 const loadData = () => {
   let inputField = document.getElementById("search-input");
+  showSpinner('block');
   let inputFieldValue = inputField.value;
+
+  /* check if search box is empty or not */
+  let empty = document.getElementById('empty');
+  if (inputFieldValue == '') {
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+  }
+
+
+  /* clear value */
   inputField.value = '';
 
   //fetching api
@@ -18,6 +37,15 @@ const loadData = () => {
 const displayPhone = (phones) => {
   let showPhone = document.getElementById('display-phone');
   showPhone.textContent = "";
+
+  //check if any device is not found in ui
+  let notFound = document.getElementById('not-found');
+  if (phones.length == 0) {
+    notFound.style.display = 'block';
+  } else {
+    notFound.style.display = 'none';
+  }
+
   phones = phones.slice(0, 20);
   for (const phone of phones) {
     showPhone.innerHTML += `<div class="col-lg-4 my-2 col-md-6 d-flex justify-content-center">
@@ -29,8 +57,8 @@ const displayPhone = (phones) => {
                                     </div>
                                   </div>
                                 </div>`
-
   }
+  showSpinner('none');
 }
 
 // phone data load using fetch api
@@ -53,12 +81,15 @@ const displayPhoneDetails = (details) => {
     phone.releaseDate = 'realease date not found'
   }
 
+
+
+
   let showDetail = document.getElementById('show-detail');
   showDetail.innerHTML = `<div class="col-lg-10 mb-3 d-flex justify-content-center  ">
                             <div class="card border-0 rounded shadow p-4  " style="width: 52rem">
                              <div class = "image text-center">
                              <img id="heading-img" src=${ phone.image } class="card-img-top img-fluid" alt="..." />
-                             <h3 class ="h2"><strong> ${phone.brand} ${phone.name}  </strong></h3>
+                             <h3 class ="h2 mt-2"><strong> ${ phone.brand } ${ phone.name }  </strong></h3>
                              </div>
                               <div class="card-body detail-panel">
 
@@ -68,15 +99,15 @@ const displayPhoneDetails = (details) => {
                                   <tbody>
                                     <tr>                    
                                       <th>Brand :</td>
-                                      <td>${phone.brand}</td>                    
+                                      <td>${ phone.brand }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Name :</td>
-                                      <td>${phone.name}</td>                    
+                                      <td>${ phone.name }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Released :</td>
-                                      <td>${phone.releaseDate}</td>                    
+                                      <td>${ phone.releaseDate }</td>                    
                                     </tr>
                                   </tbody>
                                 </table>   
@@ -87,27 +118,27 @@ const displayPhoneDetails = (details) => {
                                   <tbody>
                                     <tr>                    
                                       <th>WLAN :</td>
-                                      <td>${phone.others.WLAN}</td>                    
+                                      <td>${ phone.others.WLAN }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Bluetooh :</td>
-                                      <td>${phone.others.Bluetooth}</td>                    
+                                      <td>${ phone.others.Bluetooth }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>GPS :</td>
-                                      <td>${phone.others.GPS}</td>                    
+                                      <td>${ phone.others.GPS }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>NFC :</td>
-                                      <td>${phone.others.NFC}</td>                    
+                                      <td>${ phone.others.NFC }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Radio :</td>
-                                      <td>${phone.others.Radio}</td>                    
+                                      <td>${ phone.others.Radio }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>USB :</td>
-                                      <td>${phone.others.USB}</td>                    
+                                      <td>${ phone.others.USB }</td>                    
                                     </tr>
                                   </tbody>
                                 </table>   
@@ -119,23 +150,23 @@ const displayPhoneDetails = (details) => {
                                   <tbody>
                                     <tr>                    
                                       <th>Storage :</td>
-                                      <td>${phone.mainFeatures.storage}</td>                    
+                                      <td>${ phone.mainFeatures.storage }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Display Size :</td>
-                                      <td>${phone.mainFeatures.displaySize}</td>                    
+                                      <td>${ phone.mainFeatures.displaySize }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Chipset :</td>
-                                      <td>${phone.mainFeatures.chipSet}</td>                    
+                                      <td>${ phone.mainFeatures.chipSet }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Memory :</td>
-                                      <td>${phone.mainFeatures.memory}</td>                    
+                                      <td>${ phone.mainFeatures.memory }</td>                    
                                     </tr>
                                     <tr>                     
                                       <th>Sensor :</td>
-                                      <td>${phone.mainFeatures.sensors}</td>                    
+                                      <td>${ phone.mainFeatures.sensors }</td>                    
                                     </tr>
                                   </tbody>
                                 </table>   
@@ -143,5 +174,5 @@ const displayPhoneDetails = (details) => {
                               </div>
                             </div>
                           </div>`;
-  console.log(details, details.data.brand, details.data.others.WLAN)
+
 }
