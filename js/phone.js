@@ -117,8 +117,7 @@ const displayPhoneDetails = (details) => {
           </tbody>
         </table>   
 
-        <!-- connectivites  -->
-        <h2 class="h5 fw-bold">Connectivites (Others) :</h2>
+
         
         <!-- main features -->
         <h2 class="h5 fw-bold">Main Features :</h2>
@@ -126,7 +125,7 @@ const displayPhoneDetails = (details) => {
           <tbody>
             <tr>                    
               <th>Storage :</td>
-              <td>${ phone.mainFeatures.storage }</td>                    
+              <td class ="text-wrap">${ phone.mainFeatures.storage }</td>                    
             </tr>
             <tr>                     
               <th>Display Size :</td>
@@ -212,30 +211,30 @@ const displayPhoneDetails = (details) => {
 
         <!-- main features -->
         <h2 class="h5 fw-bold">Main Features :</h2>
-        <table class="table">
-          <tbody>
-            <tr>                    
-              <th>Storage :</td>
-              <td>${ phone.mainFeatures.storage }</td>                    
-            </tr>
-            <tr>                     
-              <th>Display Size :</td>
-              <td>${ phone.mainFeatures.displaySize }</td>                    
-            </tr>
-            <tr>                     
-              <th>Chipset :</td>
-              <td>${ phone.mainFeatures.chipSet }</td>                    
-            </tr>
-            <tr>                     
-              <th>Memory :</td>
-              <td>${ phone.mainFeatures.memory }</td>                    
-            </tr>
-            <tr>                     
-              <th>Sensor :</td>
-              <td>${ phone.mainFeatures.sensors }</td>                    
-            </tr>
-          </tbody>
-        </table>   
+        
+         
+            <div>                    
+              <p>Storage :</p>
+              <p>${ phone.mainFeatures.storage }</p>                    
+            </div>
+            <div>                     
+              <p>Display Size :</p>
+              <p>${ phone.mainFeatures.displaySize }</p>                    
+            </div>
+            <div>                     
+              <p>Chipset :</td>
+              <p>${ phone.mainFeatures.chipSet }</td>                    
+            </div>
+            <div>                     
+              <p>Memory :</p>
+              <p>${ phone.mainFeatures.memory }</p>                    
+            </div>
+            <div>                     
+              <p>Sensor :</p>
+              <p>${ phone.mainFeatures.sensors }</p>                    
+            </div>
+         
+       
 
       </div>
     </div>
