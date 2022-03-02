@@ -45,7 +45,7 @@ const loadPhoneData = (phoneId) => {
 } 
 
 // display phone details
-const displayDetail = () => {
+const displayPhoneDetails = () => {
   let showDetail = document.getElementById('show-detail');
   console.log(showDetail)
 }
